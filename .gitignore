@@ -1,0 +1,18 @@
+# folder
+__pycache__
+
+# file
+headers.txt
+
+# file in folder
+/config/*.json
+/database/*.sqlite3
+/driver/*
+/env/*
+/file/*
+
+# file in everywhere
+*.pem
+*.log
+*.ini
+*.DS_Store
