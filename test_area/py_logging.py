@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# 2024_0425 v9 input logger key word
+# 2024_1015 v10 modify the date format
 import logging
 import time
 import datetime
@@ -24,7 +24,7 @@ def py_logger(
     logger_name="root",
     file_console="both",
 ):
-    """Use logger, 
+    """Use logger,
     log = py_logger("w","INFO",log_path,log_name,logger_name)
 
     Args:
@@ -44,8 +44,8 @@ def py_logger(
     level_mode = logging.getLevelName(f"{level.upper()}")
     logger.setLevel(level_mode)
     formatter = logging.Formatter(
-        "[%(levelname).1s %(asctime)s %(module)s %(lineno)d] %(message)s",
-        datefmt="%H:%M:%S",
+        "[%(levelname).1s %(asctime)s %(module)s %(lineno)4d] %(message)s",
+        datefmt="%m%d_%H:%M:%S",
     )
 
     if file_console == "both" or file_console == "console":
@@ -64,9 +64,9 @@ def py_logger(
         file_handler = logging.FileHandler(
             f"{log_path}/{log_date}_{log_name}.log", f"{write_mode}", "utf-8"
         )
-        # file_handler.setLevel(logging.DEBUG)
         file_handler.setFormatter(formatter)
         logger.addHandler(file_handler)
+        print(f"{logger_name} at {log_path}/{log_date}_{log_name}.log")
     else:
         pass
     return logger
@@ -108,7 +108,9 @@ def remove_old_log(log_path="here", log_name="None"):
 if __name__ == "__main__":
     # set logger
     remove_old_log(log_path=log_path, log_name=py_name)
-    log = py_logger("w", level="DEBUG", log_path=log_path, log_name=log_name, logger_name=logger_name)
+    log = py_logger(
+        "w", level="DEBUG", log_path=log_path, log_name=log_name, logger_name=logger_name
+    )
     # log = py_logger("w","INFO",log_path,log_name,logger_name)
 
     # log test
@@ -117,5 +119,4 @@ if __name__ == "__main__":
     # close log
     close_log(log)
 
-    # to print out log information in sub module, add log = get_logger() in sub module, and make logger_name = root
     log = get_logger()

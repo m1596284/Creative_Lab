@@ -16,3 +16,6 @@ headers.txt
 *.log
 *.ini
 *.DS_Store
+*.gz
+*.zip
+*Contents*
