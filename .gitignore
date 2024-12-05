@@ -12,6 +12,7 @@ headers.txt
 /file/*
 
 # file in everywhere
+*.jpg
 *.pem
 *.log
 *.ini
