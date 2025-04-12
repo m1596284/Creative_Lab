@@ -1,0 +1,15 @@
+docker run \
+    --net=host \
+    -e TZ=Asia/Taipei \
+    -v /home/qma/mail_data:/data \
+    --name "mailserver" \
+    -h "mail.csnc.com.tw" \
+    -e "HTTPS=OFF" \
+    -e "HTTP_PORT=5080" \
+    -e "HTTPS_PORT=5443" \
+    -p 25:25 \
+    -p 110:110 \
+    -p 143:143 \
+    -p 587:587 \
+    -p 993:993 \
+    -t analogic/poste.io
